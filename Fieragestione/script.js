@@ -138,6 +138,10 @@ uploadfile.addEventListener('change', function () {
                             modalError.style.display = "block";
                             openErrorList.style.display = "block";
                             row.append($('<td title="La partita IVA deve essere lunga 11/16 caratteri" contenteditable class="td text-danger fw-bolder"/>').addClass("border border-danger border-2").html(val));
+                        }else if(val.match("Il codice ficale deve essere lungo 16 caratteri")){
+                            modalError.style.display = "block";
+                            openErrorList.style.display = "block";
+                            row.append($('<td title="Il codice ficale deve essere lungo 16 caratteri" contenteditable class="td text-danger fw-bolder"/>').addClass("border border-danger border-2").html(val));
                         } else if (val.match("VALORI AMMESSI: '001S' o '001'")) {
                             modalError.style.display = "block";
                             openErrorList.style.display = "block";
@@ -546,7 +550,7 @@ uploadfile.addEventListener('change', function () {
                             } else if (billingData_National_IdentificationCountryIso2Value === "IT" && typeValue === "Individual" && billingData_NationalIdentificationNumberValue.length != 16) {
                                 for (let key of changeBillingData_NationalIdentificationNumber) {
                                     if (row[key].length != 16) {
-                                        row[key] = row[key] + ":" + "La partita iva deve essere lunga 11/16 caratteri";
+                                        row[key] = row[key] + ":" + "Il codice ficale deve essere lungo 16 caratteri";
                                         columnErrorArray.push(changeBillingData_NationalIdentificationNumber + space)
                                     } else {}
                                 }
@@ -2910,7 +2914,8 @@ saveButton.addEventListener('click', function () {
     xmlhttp.open("POST", url, true);
     xmlhttp.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
     xmlhttp.send(data);
-    
+
+
     
 
 })
