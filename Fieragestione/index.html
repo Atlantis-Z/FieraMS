@@ -1,0 +1,195 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet"
+    integrity="sha384-GLhlTQ8iRABdZLl6O3oVMWSktQOp6b7In1Zl3/Jr59b6EGGoI1aFkw7cmDA6j6gD" crossorigin="anonymous">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css" />
+  <link rel="stylesheet" href="style.css">
+  <title id="opendFiles">FieraManagment</title>
+
+</head>
+
+<body>
+
+  <header>
+    <nav id="navbar_top" class="navbar  navbar-dark p-3">
+      <div class="container-fluid">
+        <button class="navbar-toggler" type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvasNavbar"
+          aria-controls="offcanvaNavbar">
+          <span class="navbar-toggler-icon"></span>
+        </button>
+        <h4 class="m-auto text-white">FieraMilano Managment System - FMS</h4>
+        <a id="openNewFile" class="btn btn-outline-warning" href="index.html" target="_blank">NUOVO FILE</a>
+        <div class="offcanvas offcanvas-start" tabindex="-1" id="offcanvasNavbar"
+          aria-labelledby="offcanvasNavbarLabel">
+          <div class="offcanvas-header">
+            <h5 class="offcanvas-title text-white" id="offcanvasNavbarLabel">Menu</h5>
+            <button type="button" class="btn text-white fs-3" data-bs-dismiss="offcanvas"
+              aria-label="Close">&#8678;</button>
+          </div>
+          <div class="offcanvas-body">
+            <div>
+              <div class="nav-item mb-2">
+                <a href="SorryPage.html" target="_blank">
+                  <p class="icon">&#128480;</p> Dashboard
+                </a>
+              </div>
+              <div class="nav-item mb-2">
+                <a href="index.html" target="_blank">
+                  <p class="icon">&#128462;</p> Caricamento tracciati
+                </a>
+              </div>
+              <div class="nav-item mb-2">
+                <a href="SorryPage.html" target="_blank">
+                  <p class="icon">&#128458;</p> Tracciati Caricati
+                </a>
+              </div>
+              <div class="nav-item mb-2">
+                <a href="SorryPage.html" target="_blank">
+                  <p class="icon">&#128365;</p> Manifestazioni
+                </a>
+              </div>
+              <div class="nav-item mb-2">
+                <a href="SorryPage.html" target="_blank">
+                  <p class="icon">&#128366;</p> Documentazione
+                </a>
+              </div>
+            </div>
+            <hr class="text-white">
+            <div class="text-white">
+              <p>Ultimi tracciati lavorati:</p>
+              <div>
+                <p></p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </nav>
+
+  </header>
+
+
+
+  <div>
+    <div id="modalError" class="alert alert-danger animate__animated animate__slideInDown " role="alert">
+      <div class="d-flex justify-content-between h5">
+        <div class="d-flex ">
+          <p class="text-danger">&#9888;</p>
+          <p>Sembra che ci siano degli errori!</p>
+        </div>
+        <p id="closeModale" type="text" class="text-danger "><strong>X</strong></p>
+      </div>
+    </div>
+  </div>
+
+  <div id="alertSuccess" class="alert alert-success animate__animated animate__slideInDown " role="alert">
+    <div class="d-flex justify-content-between h5">
+      <div class="d-flex ">
+        <p class="text-success">&#x2713;</p>
+        <p>Questo file non ha nessun errore!</p>
+      </div>
+      <p id="closeSuccess" type="text" class="text-success h5"><strong>X</strong></p>
+    </div>
+  </div>
+  </div>
+  </div>
+  <div id="alertWarning" class="alert alert-warning animate__animated animate__slideInDown " role="alert">
+    <div class="d-flex justify-content-between h5">
+      <div class="d-flex ">
+        <p class="text-success">&#x2713;</p>
+        <p>Questo file non ha nessun errore!</p>
+      </div>
+      <p id="closeSuccess" type="text" class="text-success h5"><strong>X</strong></p>
+    </div>
+  </div>
+  </div>
+  </div>
+
+  <div class="canvasChart">
+    <!-- <div class="chartItem">
+      <canvas aria-disabled="true" id="pieChart"></canvas>
+    </div> -->
+    <!-- <div class="chartItem">
+      <canvas aria-disabled="true" id="barChart"></canvas>
+    </div> -->
+  </div>
+
+  <main id="main">
+    <div class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pt-3 pb-2 ">
+      <div class="btn-toolbar mb-1 mb-md-0">
+        <!--INPUT THE CSV FILE-->
+        <div>
+          <input class="form-control" type="file" name="file" id="uploadfile" multiple>
+        </div>
+      </div>
+    </div>
+    <div id="content">
+      <div id="frontContent">
+        <div class="tableInfo d-flex flex-wrap justify-content-between align-items-center">
+          <div class="d-flex justify-content-between align-items-center w-50">
+            <p id="fileType" class="text-secondary h5"></p>
+          </div>
+          <div class="buttons">
+            <!-- <button class="btn btn-outline-primary m-1" id="validationButton"> VALIDA</button> -->
+            <button id="openErrorList" class="btn btn-outline-danger m-1">&#128369; ERRORI</button>
+            <a id="mailButton" class="btn btn-outline-secondary m-1" href="mailto:">&#128386; MAIL</a>
+            <button class="btn btn-outline-primary m-1" id="saveButton">&#128427; SALVA</button>
+          </div>
+        </div>
+        <div id="spinner" class="spinner-border text-success mb-2" role="status">
+          <span class="visually-hidden">Stiamo validando il tracciato...</span>
+        </div>
+        <div id="tableIMG">
+          <div id="imgText">
+            <div class="uploadMessage1  bg-warning">
+              <p> Per caricare i tracciati semplicemente clicca su "Scegli file" e seleziona il file che vuoi validare.
+              </p>
+            </div>
+            <img src="IMG/man.png" alt="">
+          </div>
+        </div>
+        <div id="errorList" class="alert alert-warning w-100" role="alert">
+          <div class="d-flex justify-content-between h4">
+            <p class="h6">&#9888; Errori presenti nelle seguenti righe:</p>
+            <p id="closeErrorList">x</p>
+          </div>
+          <ol id="columnError">
+          </ol>
+          <p class="h6" id="duplicates"></p>
+        </div>
+      </div>
+
+      <div id="table-responsive" class=" table-responsive">
+        <div id="searchButtons" class="d-flex align-items-center justify-content-between p-1">
+          <input id="searchbar" class="form-control me-2 w-50" type="text" placeholder="Search record..."
+            aria-label="Search">
+          <button class="btn btn-outline-success m-1" id="openFullTable">&#10063; FULLSCREEN</button>
+          <button class="btn btn-outline-danger m-1" id="closeFullTable">&#10005;</button>
+        </div>
+        <div class="table-cntainer">
+          <table class="table" id="table">
+          </table>
+        </div>
+      </div>
+    </div>
+  </main>
+
+
+
+
+
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.5.0/Chart.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js"
+    integrity="sha384-w76AqPfDkMBDXo30jS1Sgez6pr3x5MlQ1ZAGC+nuZB+EYdgRZgiwxhTBTkF7CXvN" crossorigin="anonymous">
+  </script>
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.0/jquery.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/papaparse@5.3.2/papaparse.min.js"></script>
+  <script  src="script.js"></script>
+</body>
+
+</html>
