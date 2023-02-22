@@ -11,7 +11,6 @@ var saveButton = document.getElementById('saveButton');
 var duplicates = document.getElementById('duplicates');
 var searchbar = document.getElementById('searchbar');
 var tableIMG = document.getElementById('tableIMG');
-var mailButton = document.getElementById('mailButton');
 var validationButton = document.getElementById('validationButton');
 var alertWarning = document.getElementById('alertWarning');
 var openFullTable = document.getElementById('openFullTable');
@@ -19,8 +18,11 @@ var table_responsive = document.getElementById('table-responsive');
 var closeFullTable = document.getElementById('closeFullTable');
 var frontContent = document.getElementById('frontContent');
 var navbar_top = document.getElementById('navbar_top');
+var uploadButton = document.getElementById('uploadButton');
+var convertButton = document.getElementById('convertButton');
 
-mailButton.style.display = "none";
+uploadButton.style.display = "none";
+convertButton.style.display = "none";
 tableIMG.style.display = "block";
 searchbar.style.display = "none";
 saveButton.style.display = "none";
@@ -35,7 +37,6 @@ uploadfile.addEventListener('click', function () {
 
 //Upload files trigger
 uploadfile.addEventListener('change', function () {
-    mailButton.style.display = "block";
     openFullTable.style.display = "block";
     tableIMG.style.display = "none"
     uploadfile.style.display = "none";
@@ -75,6 +76,7 @@ uploadfile.addEventListener('change', function () {
         skipEmptyLines: true,
         complete: function (result) {
             var fileData = result.data;
+            console.log(result)
 
             // Check filetype by filename
             var fileType = document.getElementById('fileType');
@@ -138,7 +140,7 @@ uploadfile.addEventListener('change', function () {
                             modalError.style.display = "block";
                             openErrorList.style.display = "block";
                             row.append($('<td title="La partita IVA deve essere lunga 11/16 caratteri" contenteditable class="td text-danger fw-bolder"/>').addClass("border border-danger border-2").html(val));
-                        }else if(val.match("Il codice ficale deve essere lungo 16 caratteri")){
+                        } else if (val.match("Il codice ficale deve essere lungo 16 caratteri")) {
                             modalError.style.display = "block";
                             openErrorList.style.display = "block";
                             row.append($('<td title="Il codice ficale deve essere lungo 16 caratteri" contenteditable class="td text-danger fw-bolder"/>').addClass("border border-danger border-2").html(val));
@@ -165,6 +167,8 @@ uploadfile.addEventListener('change', function () {
                         //Success modal
                         if (modalError.style.display === "block") {
                             alertSuccess.style.display = "none";
+                            convertButton.style.display = "none";
+                            uploadButton.style.display = "none";
                         } else {
                             alertSuccess.style.display = "block";
                         }
@@ -225,7 +229,13 @@ uploadfile.addEventListener('change', function () {
                             //Check if data structure is correct:
                             if (keysOfRow.length === 31) {
                                 alertWarning.style.display = "block";
-                                alertWarning.innerHTML = "Questo tracciato è in formato vecchio: convertilo!"
+                                alertWarning.innerHTML = "Questa Anagrafica è in formato vecchio: aggiungi l'iscrizione e convertile!";
+                                convertButton.style.display = "block";
+                                uploadButton.style.display = "none";
+                                uploadfile.style.display = "block";
+                            } else {
+                                convertButton.style.display = "none";
+                                uploadButton.style.display = "block";
                             }
                             checkAnagrafica();
 
@@ -245,12 +255,22 @@ uploadfile.addEventListener('change', function () {
                                     columns.push(k);
                                     header.append($('<th contenteditable class="th"/>').html(k));
                                     spinner.style.display = "none";
+                                    uploadButton.style.display = "none";
+
                                 }
                             }
                             //Check if data structure is correct:
                             if (keysOfRow.length === 23) {
                                 alertWarning.style.display = "block";
-                                alertWarning.innerHTML = "Questo tracciato è in formato vecchio: convertilo!"
+                                alertWarning.innerHTML = "Questa iscrizione è in formato vecchio: aggiungi l'Anagrafica e converti!";
+                                convertButton.style.display = "block";
+                                uploadButton.style.display = "none";
+                                uploadfile.style.display = "block";
+
+
+                            } else {
+                                convertButton.style.display = "none";
+                                uploadButton.style.display = "block";
                             }
                             checkIscrizione();
                             //NOT STRUCTURE
@@ -274,7 +294,12 @@ uploadfile.addEventListener('change', function () {
                             //Check if data structure is correct:
                             if (keysOfRow.length === 23) {
                                 alertWarning.style.display = "block";
-                                alertWarning.innerHTML = "Questo tracciato è in formato vecchio: convertilo!"
+                                alertWarning.innerHTML = "Questo tracciato è in formato vecchio: convertilo!";
+                                convertButton.style.display = "block";
+                                uploadfile.style.display = "block";
+                            } else {
+                                convertButton.style.display = "none";
+                                uploadButton.style.display = "block";
                             }
                             checkNotifica();
                         } else {
@@ -1242,28 +1267,28 @@ uploadfile.addEventListener('change', function () {
 
 
                             //FIND DUPLICATES
-                            $(function () {
-                                var tableRows = $("#table tr"); //find all the rows
-                                var rowValues = []; //to keep track of which values appear more than once
-                                tableRows.each(function () {
-                                    var rowValue = $(this).find(".td").html();
-                                    if (!rowValues[rowValue]) {
-                                        var rowComposite = new Object();
-                                        rowComposite.count = 0;
-                                        rowComposite.row = this;
-                                        rowValues[rowValue] = rowComposite;
-                                    } else {
-                                        var rowComposite = rowValues[rowValue];
-                                        if (rowComposite.count == 0) {
-                                            $(rowComposite.row).addClass("border border-warning border-2");
-                                            duplicates.innerHTML = "&#9888; Attenzione: Lo stesso OACliente è presente su più righe!"
-                                        }
+                            // $(function () {
+                            //     var tableRows = $("#table tr"); //find all the rows
+                            //     var rowValues = []; //to keep track of which values appear more than once
+                            //     tableRows.each(function () {
+                            //         var rowValue = $(this).find(".td").html();
+                            //         if (!rowValues[rowValue]) {
+                            //             var rowComposite = new Object();
+                            //             rowComposite.count = 0;
+                            //             rowComposite.row = this;
+                            //             rowValues[rowValue] = rowComposite;
+                            //         } else {
+                            //             var rowComposite = rowValues[rowValue];
+                            //             if (rowComposite.count == 0) {
+                            //                 $(rowComposite.row).addClass("border border-warning border-2");
+                            //                 duplicates.innerHTML = "&#9888; Attenzione: Lo stesso OACliente è presente su più righe!"
+                            //             }
 
-                                        $(this).addClass("border border-warning border-2");
-                                        rowComposite.count++;
-                                    }
-                                });
-                            });
+                            //             $(this).addClass("border border-warning border-2");
+                            //             rowComposite.count++;
+                            //         }
+                            //     });
+                            // });
 
 
                             //______________________________________CONDITIONALS_____________________________________
@@ -2863,6 +2888,33 @@ searchbar.addEventListener('keyup', function () {
     trs.forEach(setTrStyleDisplay)
 });
 
+//UPLOAD DATA TO GOANYWHERE
+
+convertButton.addEventListener('click', function () {
+    const csvFiles = $('#uploadfile').prop('files');
+    const formData = new FormData();
+    formData.append('file1', csvFiles[0]);
+    formData.append('file2', csvFiles[1]);
+
+    $.ajax({
+        url: 'https://services-test.fieramilano.it/uploadterze/Ajax_JSP/upload.jsp',
+        type: 'POST',
+        data: formData,
+        processData: false,
+        contentType: false,
+        success: function (response) {
+            console.log('File uploaded successfully.');
+            alertSuccess.style.display = "block";
+            alertSuccess.innerHTML = "Hai caricato con successo questo tracciato!"
+        },
+        error: function (error) {
+            console.log('Error uploading file.');
+            modalError.style.display = "block";
+            modalError.innerHTML = "Qualcosa è andato storto, riporva!"
+        }
+    });
+})
+
 //DOWNLOAD DATA INTO A NEW CSV FILE
 saveButton.addEventListener('click', function () {
     let data = "";
@@ -2885,11 +2937,11 @@ saveButton.addEventListener('click', function () {
 
     console.log(data); //String CSV
     // console.log(tableData); //Object data CSV
-    
+
     //Download Action
-    // a.href = URL.createObjectURL(new Blob([data], {
-    //     type: "text/csv"
-    // }));
+    a.href = URL.createObjectURL(new Blob([data], {
+        type: "text/csv"
+    }));
     var filename = uploadfile.files[0].name;
     var onlyname = filename.split(".");
     var newName = onlyname[0] + "_new";
@@ -2897,26 +2949,26 @@ saveButton.addEventListener('click', function () {
     document.body.appendChild(a);
     a.click();
     document.body.removeChild(a);
-    
+
     //SEND DATA TO JSP FILE
     var xmlhttp = new XMLHttpRequest();
     var url = "upload.jsp";
-    
-    xmlhttp.onreadystatechange = function() {
-      if (this.readyState == 4 && this.status == 200) {
-        // Do something with the response
-        console.log('Success')
-      }else{
-        console.log('Failure')
-      }
+
+    xmlhttp.onreadystatechange = function () {
+        if (this.readyState == 4 && this.status == 200) {
+            // Do something with the response
+            console.log('Success')
+        } else {
+            console.log('Failure')
+        }
     };
-    
+
     xmlhttp.open("POST", url, true);
     xmlhttp.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
     xmlhttp.send(data);
 
 
-    
+
 
 })
 
