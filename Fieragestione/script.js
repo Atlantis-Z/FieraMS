@@ -41,6 +41,21 @@ uploadfile.addEventListener('click', function () {
     spinner.style.display = "block";
 })
 
+upload.addEventListener('change', handleFileSelect, false);
+
+function handleFileSelect(event) {
+    const files = event.target.files;
+    for (let i = 0; i < files.length; i++) {
+        Papa.parse(files[i], {
+            header: true,
+            complete: function (results) {
+                // Do something with the parsed data
+                console.log(results.data);
+            }
+        });
+    }
+}
+
 //Upload files trigger
 uploadfile.addEventListener('change', function () {
     tablecontainer.style.display = "block";
@@ -54,6 +69,9 @@ uploadfile.addEventListener('change', function () {
     opendFiles.innerHTML = filename;
     saveButton.style.display = "block";
     searchbar.style.display = "block";
+
+
+   
 
     //Parse the documents
     Papa.parse(uploadfile.files[0], {
@@ -2853,8 +2871,8 @@ openErrorList.addEventListener('click', function () {
     openErrorList.style.display = 'none'
 })
 
- //Open Full Table
- openFullTable.addEventListener('click', function () {
+//Open Full Table
+openFullTable.addEventListener('click', function () {
     table_responsive.style.position = "absolute";
     table_responsive.style.top = "0px";
     table_responsive.style.left = "0px";
