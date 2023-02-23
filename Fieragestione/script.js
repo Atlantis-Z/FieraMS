@@ -1,3 +1,4 @@
+//Global variables
 var modalError = document.getElementById('modalError');
 var alertSuccess = document.getElementById('alertSuccess');
 var main = document.getElementById('main');
@@ -20,7 +21,12 @@ var frontContent = document.getElementById('frontContent');
 var navbar_top = document.getElementById('navbar_top');
 var uploadButton = document.getElementById('uploadButton');
 var convertButton = document.getElementById('convertButton');
+var tablecontainer = document.getElementById("tablecontainer");
+var searchButtons = document.getElementById("searchButtons");
 
+//Display settings
+searchButtons.style.display = "none";
+tablecontainer.style.display = "none";
 uploadButton.style.display = "none";
 convertButton.style.display = "none";
 tableIMG.style.display = "block";
@@ -30,13 +36,15 @@ openFullTable.style.display = "none";
 closeFullTable.style.display = "none";
 alertWarning.style.display = "none";
 
+//Spinner Display
 uploadfile.addEventListener('click', function () {
     spinner.style.display = "block";
-
 })
 
 //Upload files trigger
 uploadfile.addEventListener('change', function () {
+    tablecontainer.style.display = "block";
+    searchButtons.style.display = "block";
     openFullTable.style.display = "block";
     tableIMG.style.display = "none"
     uploadfile.style.display = "none";
@@ -46,28 +54,6 @@ uploadfile.addEventListener('change', function () {
     opendFiles.innerHTML = filename;
     saveButton.style.display = "block";
     searchbar.style.display = "block";
-
-    openFullTable.addEventListener('click', function () {
-        table_responsive.style.position = "absolute";
-        table_responsive.style.top = "0px";
-        table_responsive.style.left = "0px";
-        table_responsive.style.right = "0px";
-        table_responsive.style.bottom = "0px";
-        table_responsive.style.height = "auto";
-        openFullTable.style.display = "none";
-        closeFullTable.style.display = "block";
-        frontContent.style.display = "none";
-        navbar_top.style.display = "none";
-    })
-
-    closeFullTable.addEventListener('click', function () {
-        table_responsive.style.position = "relative";
-        table_responsive.style.height = "auto"
-        closeFullTable.style.display = "none";
-        openFullTable.style.display = "block";
-        frontContent.style.display = "block";
-        navbar_top.style.display = "block";
-    })
 
     //Parse the documents
     Papa.parse(uploadfile.files[0], {
@@ -2867,6 +2853,30 @@ openErrorList.addEventListener('click', function () {
     openErrorList.style.display = 'none'
 })
 
+ //Open Full Table
+ openFullTable.addEventListener('click', function () {
+    table_responsive.style.position = "absolute";
+    table_responsive.style.top = "0px";
+    table_responsive.style.left = "0px";
+    table_responsive.style.right = "0px";
+    table_responsive.style.bottom = "0px";
+    table_responsive.style.height = "auto";
+    openFullTable.style.display = "none";
+    closeFullTable.style.display = "block";
+    frontContent.style.display = "none";
+    navbar_top.style.display = "none";
+})
+
+//Close Full Table
+closeFullTable.addEventListener('click', function () {
+    table_responsive.style.position = "relative";
+    table_responsive.style.height = "auto"
+    closeFullTable.style.display = "none";
+    openFullTable.style.display = "block";
+    frontContent.style.display = "block";
+    navbar_top.style.display = "block";
+})
+
 var errorGraphArray = [];
 
 //Filter searchbar
@@ -2888,13 +2898,38 @@ searchbar.addEventListener('keyup', function () {
     trs.forEach(setTrStyleDisplay)
 });
 
-//UPLOAD DATA TO GOANYWHERE
+//SEND DATA TO JSP (uload)
+uploadButton.addEventListener('click', function () {
+    const csvFiles = $('#uploadfile').prop('files');
+    const formData = new FormData();
+    formData.append('NUOVO_0', csvFiles[0]);
+    formData.append("NUOVO", "typeOfLoad");
 
+    $.ajax({
+        url: 'https://services-test.fieramilano.it/uploadterze/Ajax_JSP/upload.jsp',
+        type: 'POST',
+        data: formData,
+        processData: false,
+        contentType: false,
+        success: function (response) {
+            console.log('File uploaded successfully.');
+            alertSuccess.style.display = "block";
+            alertSuccess.innerHTML = "Hai caricato con successo questo tracciato!"
+        },
+        error: function (error) {
+            console.log('Error uploading file.');
+            modalError.style.display = "block";
+            modalError.innerHTML = "Qualcosa è andato storto, riporva!"
+        }
+    });
+})
+//SEND DATA TO JSP (convert)
 convertButton.addEventListener('click', function () {
     const csvFiles = $('#uploadfile').prop('files');
     const formData = new FormData();
-    formData.append('file1', csvFiles[0]);
-    formData.append('file2', csvFiles[1]);
+    formData.append('VECCHIO_1', csvFiles[0]);
+    formData.append('VECCHIO_2', csvFiles[1]);
+    formData.append("VECCHIO", "typeOfLoad");
 
     $.ajax({
         url: 'https://services-test.fieramilano.it/uploadterze/Ajax_JSP/upload.jsp',
@@ -2949,26 +2984,6 @@ saveButton.addEventListener('click', function () {
     document.body.appendChild(a);
     a.click();
     document.body.removeChild(a);
-
-    //SEND DATA TO JSP FILE
-    var xmlhttp = new XMLHttpRequest();
-    var url = "upload.jsp";
-
-    xmlhttp.onreadystatechange = function () {
-        if (this.readyState == 4 && this.status == 200) {
-            // Do something with the response
-            console.log('Success')
-        } else {
-            console.log('Failure')
-        }
-    };
-
-    xmlhttp.open("POST", url, true);
-    xmlhttp.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
-    xmlhttp.send(data);
-
-
-
 
 })
 
