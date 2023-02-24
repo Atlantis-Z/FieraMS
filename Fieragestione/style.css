@@ -155,6 +155,7 @@ td:hover {
     position: sticky;
     left: 0;
     right: 0;
+    padding: 15px;
 }
 
 .buttons {
@@ -292,6 +293,5 @@ td:first-child {
     margin: auto;
     height: auto;
     width: 300px;
-}
+};
 
-;

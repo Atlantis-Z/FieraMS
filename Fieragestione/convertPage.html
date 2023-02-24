@@ -1,0 +1,188 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-GLhlTQ8iRABdZLl6O3oVMWSktQOp6b7In1Zl3/Jr59b6EGGoI1aFkw7cmDA6j6gD" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css" />
+    <link rel="stylesheet" href="styleConvert.css">
+    <title>Convertitore</title>
+</head>
+
+<body>
+    <header>
+        <nav id="navbar_top" class="navbar  navbar-dark p-3">
+            <div class="container-fluid">
+                <button class="navbar-toggler" type="button" data-bs-toggle="offcanvas"
+                    data-bs-target="#offcanvasNavbar" aria-controls="offcanvaNavbar">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+                <h4 class="m-auto text-white">Convertitore</h4>
+                <a id="openNewFile" class="btn btn-outline-warning" href="index.html" target="_blank">NUOVO FILE</a>
+                <div class="offcanvas offcanvas-start" tabindex="-1" id="offcanvasNavbar"
+                    aria-labelledby="offcanvasNavbarLabel">
+                    <div class="offcanvas-header">
+                        <h5 class="offcanvas-title text-white" id="offcanvasNavbarLabel">Menu</h5>
+                        <button type="button" class="btn text-white fs-3" data-bs-dismiss="offcanvas"
+                            aria-label="Close">&#8678;</button>
+                    </div>
+                    <div class="offcanvas-body">
+                        <div>
+                            <div class="nav-item mb-2">
+                                <a href="SorryPage.html" target="_blank">
+                                    <p class="icon">&#128480;</p> Dashboard
+                                </a>
+                            </div>
+                            <div class="nav-item mb-2">
+                                <a href="index.html" target="_blank">
+                                    <p class="icon">&#128462;</p> Caricamento tracciati
+                                </a>
+                            </div>
+                            <div class="nav-item mb-2">
+                                <a href="convertPage.html" target="_blank">
+                                    <p class="icon">&#9851;</p> Convertitore
+                                </a>
+                            </div>
+                            <div class="nav-item mb-2">
+                                <a href="SorryPage.html" target="_blank">
+                                    <p class="icon">&#128458;</p> Tracciati Caricati
+                                </a>
+                            </div>
+                            <div class="nav-item mb-2">
+                                <a href="SorryPage.html" target="_blank">
+                                    <p class="icon">&#128365;</p> Manifestazioni
+                                </a>
+                            </div>
+                            <div class="nav-item mb-2">
+                                <a href="SorryPage.html" target="_blank">
+                                    <p class="icon">&#128366;</p> Documentazione
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                    <hr class="text-white">
+                    <div class="text-white">
+                        <p>Ultimi tracciati lavorati:</p>
+                        <div>
+                            <p></p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            </div>
+        </nav>
+
+    </header>
+
+    <main>
+
+        <!--Success Message-->
+        <div id="alertSuccess" class="alert alert-success animate__animated animate__slideInDown w-100" role="alert">
+            <div class="d-flex justify-content-between">
+                <div class="d-flex ">
+                    <p class="text-success">&#x2713;</p>
+                    <p>Questo file non ha nessun errore!</p>
+                </div>
+                <p id="closeSuccess" type="text" class="text-success"><strong>X</strong></p>
+            </div>
+        </div>
+
+        <!--Error Message-->
+        <div id="modalError" class="alert alert-danger animate__animated animate__slideInDown " role="alert">
+            <div class="d-flex justify-content-between">
+                <div class="d-flex ">
+                    <p class="text-danger">&#9888;</p>
+                    <p>Sembra che ci siano degli errori!</p>
+                </div>
+                <p id="closeModale" type="text" class="text-danger "><strong>X</strong></p>
+            </div>
+        </div>
+
+        <!--SPINNER-->
+        <div id="spinner" class="spinner-border text-success mb-2 mt-2" role="status">
+            <span class="visually-hidden">Stiamo validando il tracciato...</span>
+        </div>
+
+
+        <!--Info Modale-->
+        <div class="mt-5" id="instructionsConvert">
+            <div class="imgContainer">
+                <div id="imageConverter">
+                    <img src="IMG/table.jpg">
+                </div>
+            </div>
+            <div class="containerInfo">
+                <h6><strong>In questa sezione potrai convertire i tuoi file dal formato vecchio a quello nuovo.</strong></h6>
+
+                <p><strong>Anagrafica e Iscrizione:</strong></p>
+                <ul>
+                    <li>Assicurati che i due file siano compilati in maniera corretta (puoi fare questo controllo
+                        cliccando <a target="_blank" class="text-primary" href="index.html">qui</a>).</li>
+                    <li>Assicurati che i due file non siano già stati convertiti (puoi fare questo controllo cliccando
+                        <a target="_blank" class="text-primary" href="index.html">qui</a>).</li>
+                    <li>Assicurati di selezionare entrambi i file quando sei pronto per convertirli.</li>
+                </ul>
+
+                <p><strong>Notifica:</strong></p>
+                <ul>
+                    <li>Assicurati che il file non presenti alcun errore di compilazione (puoi fare questo controllo
+                        cliccando <a target="_blank" href="index.html" class="text-primary">qui</a>).</li>
+                    <li>Assicurati che il file non sia già convertito nel nuovo formato(puoi fare questo controllo
+                        cliccando <a target="_blank" href="index.html" class="text-primary">qui</a>).</li>
+                </ul>
+                <button class="btn btn-warning m-1" id="startConvertButton">&#9851; iNIZIA IL PROCESSO DI
+                    CONVERSIONE</button>
+            </div>
+        </div>
+
+
+
+        <!--SPINNER-->
+        <div id="spinner" class="spinner-border text-success mb-2 mt-2" role="status">
+            <span class="visually-hidden">Stiamo validando il tracciato...</span>
+        </div>
+
+
+        <div id="dynamicContent">
+            <!--INPUT THE CSV FILE-->
+            <div class="d-flex flex-column align-items-center w-75 m-auto">
+                <div class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pt-3 pb-2 ">
+                    <div class="btn-toolbar mb-1 mb-md-0">
+                        <label for="uploadfile">Selezione i file che vuoi convertire</label>
+                        <input class="form-control" type="file" name="file" id="uploadfile" multiple>
+                    </div>
+                </div>
+
+                <div class="mt-5">
+                    <h5 id="selectedFilesTitle">File selezionati:</h5>
+                    <div id="file-list"></div>
+
+                    <div class="mt-3">
+                        <label id="proceed" for="convertButton">Vuoi convertire questi file?</label>
+                        <button class="btn btn-warning m-1" id="convertButton">&#9851; CONVERTI</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+    </main>
+
+
+
+
+
+
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.5.0/Chart.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-w76AqPfDkMBDXo30jS1Sgez6pr3x5MlQ1ZAGC+nuZB+EYdgRZgiwxhTBTkF7CXvN" crossorigin="anonymous">
+    </script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.0/jquery.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/papaparse@5.3.2/papaparse.min.js"></script>
+    <script src="convertScript.js"></script>
+</body>
+
+</html>

@@ -1,0 +1,90 @@
+body {
+    color: black;
+    background-color: white;
+    font-size: small;
+    font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+}
+
+
+.navbar {
+    background-color: #285f44;
+    box-shadow: 2px 5px 5px lightgrey;
+
+}
+
+.offcanvas {
+    background-color: #285f44;
+    font-size: large;
+}
+
+#closeSide {
+    font-size: xx-large;
+}
+
+.nav-item {
+    width: 100%;
+    height: fit-content;
+    background-color: #337756;
+    border-radius: 5px;
+    padding: 5px;
+}
+
+.icon {
+    display: inline;
+}
+
+.nav-item a {
+    text-decoration: none;
+    color: white;
+}
+
+#convertButton{
+    display: none;
+}
+
+#modalError {
+    display: none;
+    margin-bottom: 0px;
+    height: 40px;
+}
+
+#alertSuccess {
+    display: none;
+    margin-bottom: 0px;
+    height: 40px;
+}
+
+#spinner {
+    display: none;
+    margin: auto;
+}
+
+#instructionsConvert{
+    height: auto;
+    width: auto;
+    display: flex;
+}
+
+.containerInfo{
+    padding: 20px;
+    margin: auto;
+    border: 1px solid lightgrey;
+    border-radius: 10px;
+    box-shadow: 5px 10px 10px lightgrey;
+}
+
+.imgContainer{
+    padding: 10px;
+    margin: auto;
+}
+
+#imageConverter img{
+    height: 250px;
+    width: auto;
+    margin: auto;
+}
+
+#dynamicContent{
+    display: none;
+};
+

@@ -23,6 +23,7 @@ var uploadButton = document.getElementById('uploadButton');
 var convertButton = document.getElementById('convertButton');
 var tablecontainer = document.getElementById("tablecontainer");
 var searchButtons = document.getElementById("searchButtons");
+var addFile = document.getElementById("addFile");
 
 //Display settings
 searchButtons.style.display = "none";
@@ -41,21 +42,6 @@ uploadfile.addEventListener('click', function () {
     spinner.style.display = "block";
 })
 
-upload.addEventListener('change', handleFileSelect, false);
-
-function handleFileSelect(event) {
-    const files = event.target.files;
-    for (let i = 0; i < files.length; i++) {
-        Papa.parse(files[i], {
-            header: true,
-            complete: function (results) {
-                // Do something with the parsed data
-                console.log(results.data);
-            }
-        });
-    }
-}
-
 //Upload files trigger
 uploadfile.addEventListener('change', function () {
     tablecontainer.style.display = "block";
@@ -69,9 +55,6 @@ uploadfile.addEventListener('change', function () {
     opendFiles.innerHTML = filename;
     saveButton.style.display = "block";
     searchbar.style.display = "block";
-
-
-   
 
     //Parse the documents
     Papa.parse(uploadfile.files[0], {
@@ -211,7 +194,6 @@ uploadfile.addEventListener('change', function () {
                         //     console.log("___________________________")
                         //     valuesOfRow.forEach(element => console.log("Non variable elements:"+" "+element))
                         // })
-
 
                         //ANAG STRUCTURE
                         if (keysOfRow.length === 27 || keysOfRow.length === 31 && filename.includes('ANAG')) {
@@ -2916,8 +2898,9 @@ searchbar.addEventListener('keyup', function () {
     trs.forEach(setTrStyleDisplay)
 });
 
-//SEND DATA TO JSP (uload)
+//SEND DATA TO JSP (upload)
 uploadButton.addEventListener('click', function () {
+    spinner.style.display = "block";
     const csvFiles = $('#uploadfile').prop('files');
     const formData = new FormData();
     formData.append('NUOVO_0', csvFiles[0]);
@@ -2931,42 +2914,19 @@ uploadButton.addEventListener('click', function () {
         contentType: false,
         success: function (response) {
             console.log('File uploaded successfully.');
+            spinner.style.display = "none";
             alertSuccess.style.display = "block";
             alertSuccess.innerHTML = "Hai caricato con successo questo tracciato!"
         },
         error: function (error) {
             console.log('Error uploading file.');
+            spinner.style.display = "none";
             modalError.style.display = "block";
             modalError.innerHTML = "Qualcosa è andato storto, riporva!"
         }
     });
 })
-//SEND DATA TO JSP (convert)
-convertButton.addEventListener('click', function () {
-    const csvFiles = $('#uploadfile').prop('files');
-    const formData = new FormData();
-    formData.append('VECCHIO_1', csvFiles[0]);
-    formData.append('VECCHIO_2', csvFiles[1]);
-    formData.append("VECCHIO", "typeOfLoad");
 
-    $.ajax({
-        url: 'https://services-test.fieramilano.it/uploadterze/Ajax_JSP/upload.jsp',
-        type: 'POST',
-        data: formData,
-        processData: false,
-        contentType: false,
-        success: function (response) {
-            console.log('File uploaded successfully.');
-            alertSuccess.style.display = "block";
-            alertSuccess.innerHTML = "Hai caricato con successo questo tracciato!"
-        },
-        error: function (error) {
-            console.log('Error uploading file.');
-            modalError.style.display = "block";
-            modalError.innerHTML = "Qualcosa è andato storto, riporva!"
-        }
-    });
-})
 
 //DOWNLOAD DATA INTO A NEW CSV FILE
 saveButton.addEventListener('click', function () {

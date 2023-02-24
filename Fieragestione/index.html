@@ -22,7 +22,7 @@
           aria-controls="offcanvaNavbar">
           <span class="navbar-toggler-icon"></span>
         </button>
-        <h4 class="m-auto text-white">FieraMilano Managment System - FMS</h4>
+        <h4 class="m-auto text-white">Validatore</h4>
         <a id="openNewFile" class="btn btn-outline-warning" href="index.html" target="_blank">NUOVO FILE</a>
         <div class="offcanvas offcanvas-start" tabindex="-1" id="offcanvasNavbar"
           aria-labelledby="offcanvasNavbarLabel">
@@ -40,7 +40,12 @@
               </div>
               <div class="nav-item mb-2">
                 <a href="index.html" target="_blank">
-                  <p class="icon">&#128462;</p> Caricamento tracciati
+                  <p class="icon">&#128462;</p> Validatore
+                </a>
+              </div>
+              <div class="nav-item mb-2">
+                <a href="convertPage.html" target="_blank">
+                  <p class="icon">&#9851;</p> Convertitore
                 </a>
               </div>
               <div class="nav-item mb-2">
@@ -99,12 +104,6 @@
   </div>
 
 
-
-
-
-
-
-
   <!--CANVAS CHART-->
   <!-- <div class="canvasChart">
     <div class="chartItem">
@@ -151,7 +150,7 @@
           <button id="openErrorList" class="btn btn-outline-danger m-1">&#128369; ERRORI</button>
           <button class="btn btn-primary m-1" id="saveButton">&#128427; SCARICA</button>
           <button class="btn btn-success m-1" id="uploadButton">&#9729; CARICA</button>
-          <button class="btn btn-warning m-1" id="convertButton">&#9851; CONVERTI</button>
+          <button class="btn btn-warning m-1" id="convertButton"><a href="convertPage.html" target="_blank">&#9851; CONVERTI</a></button>
         </div>
       </div>
 
@@ -181,7 +180,7 @@
 
 
         <!--FULLSCREEN button-->
-        <div id="searchButtons" class="d-flex align-items-center justify-content-between p-1">
+        <div id="searchButtons" class="d-flex align-items-center justify-content-between">
           <!--Searchbar-->
           <input id="searchbar" class="form-control me-2 w-50" type="text" placeholder="Search record..."
             aria-label="Search">
