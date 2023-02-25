@@ -8,6 +8,7 @@ var dynamicContent = document.getElementById("dynamicContent");
 var instructionsConvert = document.getElementById("instructionsConvert");
 var selectedFilesTitle = document.getElementById("selectedFilesTitle");
 var proceed = document.getElementById("proceed");
+var cantProceed = document.getElementById("cantProceed");
 
 
 
@@ -48,12 +49,14 @@ uploadfile.addEventListener('change', function () {
             selectedFilesTitle.style.display = "block";
             proceed.style.display = "block";
             spinner.style.display="none";
+            cantProceed.style.display="none";
 
         } else {
             convertButton.style.display = "none";
             selectedFilesTitle.style.display = "block";
-            proceed.style.display = "block";
+            proceed.style.display = "none";
             spinner.style.display="none";
+            cantProceed.innerHTML = "Devi selezionare i file in maniera corretta! Non possiamo procedere con la conversione..."
 
 
         }
