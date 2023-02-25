@@ -56,6 +56,8 @@ uploadfile.addEventListener('change', function () {
     saveButton.style.display = "block";
     searchbar.style.display = "block";
 
+    //Console.log the files with index 0 & 1
+    console.log(uploadfile.files[0], uploadfile.files[1])
     //Parse the documents
     Papa.parse(uploadfile.files[0], {
         download: true,
@@ -63,7 +65,6 @@ uploadfile.addEventListener('change', function () {
         skipEmptyLines: true,
         complete: function (result) {
             var fileData = result.data;
-            console.log(result)
 
             // Check filetype by filename
             var fileType = document.getElementById('fileType');
