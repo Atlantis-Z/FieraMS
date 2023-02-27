@@ -42,6 +42,10 @@ uploadfile.addEventListener('click', function () {
     spinner.style.display = "block";
 })
 
+
+//Create an array to store the files that you open
+var fileContainer= [];
+
 //Upload files trigger
 uploadfile.addEventListener('change', function () {
     tablecontainer.style.display = "block";
@@ -56,8 +60,12 @@ uploadfile.addEventListener('change', function () {
     saveButton.style.display = "block";
     searchbar.style.display = "block";
 
-    //Console.log the files with index 0 & 1
-    console.log(uploadfile.files[0], uploadfile.files[1])
+    //Save the files in the file container
+    var files = uploadfile.files;
+    for (let i = 0; i < files.length; i++) {
+        fileContainer.push(files[i]);
+      }
+
     //Parse the documents
     Papa.parse(uploadfile.files[0], {
         download: true,
@@ -220,9 +228,11 @@ uploadfile.addEventListener('change', function () {
                                 convertButton.style.display = "block";
                                 uploadButton.style.display = "none";
                                 uploadfile.style.display = "block";
+                                saveButton.style.display = "none";
                             } else {
                                 convertButton.style.display = "none";
                                 uploadButton.style.display = "block";
+                                saveButton.style.display = "block";
                             }
                             checkAnagrafica();
 
@@ -253,11 +263,12 @@ uploadfile.addEventListener('change', function () {
                                 convertButton.style.display = "block";
                                 uploadButton.style.display = "none";
                                 uploadfile.style.display = "block";
-
-
+                                saveButton.style.display = "none";
                             } else {
                                 convertButton.style.display = "none";
                                 uploadButton.style.display = "block";
+                                saveButton.style.display = "block";
+
                             }
                             checkIscrizione();
                             //NOT STRUCTURE
@@ -284,9 +295,13 @@ uploadfile.addEventListener('change', function () {
                                 alertWarning.innerHTML = "Questo tracciato è in formato vecchio: convertilo!";
                                 convertButton.style.display = "block";
                                 uploadfile.style.display = "block";
+                                saveButton.style.display = "none";
+
                             } else {
                                 convertButton.style.display = "none";
                                 uploadButton.style.display = "block";
+                                saveButton.style.display = "block";
+
                             }
                             checkNotifica();
                         } else {
@@ -2899,12 +2914,45 @@ searchbar.addEventListener('keyup', function () {
     trs.forEach(setTrStyleDisplay)
 });
 
+
+//SEND DATA TO JSP (convert)
+convertButton.addEventListener("click", function(){
+    spinner.style.display = "block";
+    const formData = new FormData();
+    //Append the files of the array that we created and send the ones with index 0 e 1
+    formData.append('VECCHIO_1', fileContainer[0]);
+    formData.append('VECCHIO_2', fileContainer[1]);
+    formData.append("VECCHIO", "typeOfLoad");
+
+    $.ajax({
+        url: 'https://services-test.fieramilano.it/uploadterze/Ajax_JSP/upload.jsp',
+        type: 'POST',
+        data: formData,
+        processData: false,
+        contentType: false,
+        success: function (response) {
+            console.log('File uploaded successfully.');
+            alertSuccess.style.display = "block";
+            spinner.style.display = "none";
+            alertSuccess.innerHTML = "Hai caricato con successo questo tracciato!";
+            fileContainer =[];
+            console.log(fileContainer);
+        },
+        error: function (error) {
+            console.log('Error uploading file.');
+            spinner.style.display = "none";
+            modalError.style.display = "block";
+            modalError.innerHTML = "Qualcosa è andato storto, riporva!"
+        }
+    });
+});
+
 //SEND DATA TO JSP (upload)
 uploadButton.addEventListener('click', function () {
     spinner.style.display = "block";
-    const csvFiles = $('#uploadfile').prop('files');
     const formData = new FormData();
-    formData.append('NUOVO_0', csvFiles[0]);
+    //Append the files of the array that we created and send the ones with index 0
+    formData.append('NUOVO_0', fileContainer[0]);
     formData.append("NUOVO", "typeOfLoad");
 
     $.ajax({
@@ -2918,6 +2966,8 @@ uploadButton.addEventListener('click', function () {
             spinner.style.display = "none";
             alertSuccess.style.display = "block";
             alertSuccess.innerHTML = "Hai caricato con successo questo tracciato!"
+            fileContainer =[];
+            console.log(fileContainer)
         },
         error: function (error) {
             console.log('Error uploading file.');
@@ -2949,7 +2999,7 @@ saveButton.addEventListener('click', function () {
     data += tableData.join("\n");
     const a = document.createElement("a");
 
-    console.log(data); //String CSV
+    //String CSV
     // console.log(tableData); //Object data CSV
 
     //Download Action
@@ -2965,22 +3015,6 @@ saveButton.addEventListener('click', function () {
     document.body.removeChild(a);
 
 })
-
-// document.addEventListener("DOMContentLoaded", function(){
-//     window.addEventListener('scroll', function() {
-//         if (window.scrollY > 50) {
-//           document.getElementById('navbar_top').classList.add('fixed-top');
-//           // add padding top to show content behind navbar
-//           navbar_height = document.querySelector('.navbar').offsetHeight;
-//           document.body.style.paddingTop = navbar_height + 'px';
-//         } else {
-//           document.getElementById('navbar_top').classList.remove('fixed-top');
-//            // remove padding top from body
-//           document.body.style.paddingTop = '0';
-//         } 
-//     });
-//   });
-
 
 // // Are you sure you want to leave?
 // window.onbeforeunload = function () {
