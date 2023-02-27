@@ -2999,9 +2999,6 @@ saveButton.addEventListener('click', function () {
     data += tableData.join("\n");
     const a = document.createElement("a");
 
-    //String CSV
-    // console.log(tableData); //Object data CSV
-
     //Download Action
     a.href = URL.createObjectURL(new Blob([data], {
         type: "text/csv"
