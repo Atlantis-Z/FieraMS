@@ -42,9 +42,8 @@ uploadfile.addEventListener('click', function () {
     spinner.style.display = "block";
 })
 
-
 //Create an array to store the files that you open
-var fileContainer= [];
+var fileContainer = [];
 
 //Upload files trigger
 uploadfile.addEventListener('change', function () {
@@ -64,7 +63,7 @@ uploadfile.addEventListener('change', function () {
     var files = uploadfile.files;
     for (let i = 0; i < files.length; i++) {
         fileContainer.push(files[i]);
-      }
+    }
 
     //Parse the documents
     Papa.parse(uploadfile.files[0], {
@@ -96,13 +95,13 @@ uploadfile.addEventListener('change', function () {
             function constructTable(selector) {
                 // Getting the all column names
                 var cols = Headers(fileData, selector);
-
                 // Traversing the JSON data
                 for (var i = 0; i < fileData.length; i++) {
                     var row = $('<tr class="body"/>');
                     for (var colIndex = 0; colIndex < cols.length; colIndex++) {
                         var val = fileData[i][cols[colIndex]];
 
+                        //Conditionals for the errors
                         if (val == null) val = "";
                         if (val.match('CAMPO OBBLIGATORIO')) {
                             modalError.style.display = "block";
@@ -225,10 +224,10 @@ uploadfile.addEventListener('change', function () {
                             if (keysOfRow.length === 31) {
                                 alertWarning.style.display = "block";
                                 alertWarning.innerHTML = "Questa Anagrafica è in formato vecchio: aggiungi l'iscrizione e convertile!";
-                                convertButton.style.display = "block";
+                                // convertButton.style.display = "block";
                                 uploadButton.style.display = "none";
                                 uploadfile.style.display = "block";
-                                saveButton.style.display = "none";
+                                // saveButton.style.display = "none";
                             } else {
                                 convertButton.style.display = "none";
                                 uploadButton.style.display = "block";
@@ -260,10 +259,10 @@ uploadfile.addEventListener('change', function () {
                             if (keysOfRow.length === 23) {
                                 alertWarning.style.display = "block";
                                 alertWarning.innerHTML = "Questa iscrizione è in formato vecchio: aggiungi l'Anagrafica e converti!";
-                                convertButton.style.display = "block";
+                                // convertButton.style.display = "block";
                                 uploadButton.style.display = "none";
                                 uploadfile.style.display = "block";
-                                saveButton.style.display = "none";
+                                // saveButton.style.display = "none";
                             } else {
                                 convertButton.style.display = "none";
                                 uploadButton.style.display = "block";
@@ -293,9 +292,9 @@ uploadfile.addEventListener('change', function () {
                             if (keysOfRow.length === 23) {
                                 alertWarning.style.display = "block";
                                 alertWarning.innerHTML = "Questo tracciato è in formato vecchio: convertilo!";
-                                convertButton.style.display = "block";
+                                // convertButton.style.display = "block";
                                 uploadfile.style.display = "block";
-                                saveButton.style.display = "none";
+                                // saveButton.style.display = "none";
 
                             } else {
                                 convertButton.style.display = "none";
@@ -2834,12 +2833,7 @@ uploadfile.addEventListener('change', function () {
                     $(selector).append(header);
                     return columns;
                 }
-
-
             };
-
-
-
         }
     })
 
@@ -2893,6 +2887,7 @@ closeFullTable.addEventListener('click', function () {
     navbar_top.style.display = "block";
 })
 
+//Containers for the errors used for Chart.js
 var errorGraphArray = [];
 
 //Filter searchbar
@@ -2914,38 +2909,37 @@ searchbar.addEventListener('keyup', function () {
     trs.forEach(setTrStyleDisplay)
 });
 
+// //SEND DATA TO JSP (convert)
+// convertButton.addEventListener("click", function(){
+//     spinner.style.display = "block";
+//     const formData = new FormData();
+//     //Append the files of the array that we created and send the ones with index 0 e 1
+//     formData.append('VECCHIO_1', fileContainer[0]);
+//     formData.append('VECCHIO_2', fileContainer[1]);
+//     formData.append("VECCHIO", "typeOfLoad");
 
-//SEND DATA TO JSP (convert)
-convertButton.addEventListener("click", function(){
-    spinner.style.display = "block";
-    const formData = new FormData();
-    //Append the files of the array that we created and send the ones with index 0 e 1
-    formData.append('VECCHIO_1', fileContainer[0]);
-    formData.append('VECCHIO_2', fileContainer[1]);
-    formData.append("VECCHIO", "typeOfLoad");
-
-    $.ajax({
-        url: 'https://services-test.fieramilano.it/uploadterze/Ajax_JSP/upload.jsp',
-        type: 'POST',
-        data: formData,
-        processData: false,
-        contentType: false,
-        success: function (response) {
-            console.log('File uploaded successfully.');
-            alertSuccess.style.display = "block";
-            spinner.style.display = "none";
-            alertSuccess.innerHTML = "Hai caricato con successo questo tracciato!";
-            fileContainer =[];
-            console.log(fileContainer);
-        },
-        error: function (error) {
-            console.log('Error uploading file.');
-            spinner.style.display = "none";
-            modalError.style.display = "block";
-            modalError.innerHTML = "Qualcosa è andato storto, riporva!"
-        }
-    });
-});
+//     $.ajax({
+//         url: 'https://services-test.fieramilano.it/uploadterze/Ajax_JSP/upload.jsp',
+//         type: 'POST',
+//         data: formData,
+//         processData: false,
+//         contentType: false,
+//         success: function (response) {
+//             console.log('File uploaded successfully.');
+//             alertSuccess.style.display = "block";
+//             spinner.style.display = "none";
+//             alertSuccess.innerHTML = "Hai caricato con successo questo tracciato!";
+//             fileContainer =[];
+//             console.log(fileContainer);
+//         },
+//         error: function (error) {
+//             console.log('Error uploading file.');
+//             spinner.style.display = "none";
+//             modalError.style.display = "block";
+//             modalError.innerHTML = "Qualcosa è andato storto, riporva!"
+//         }
+//     });
+// });
 
 //SEND DATA TO JSP (upload)
 uploadButton.addEventListener('click', function () {
@@ -2966,7 +2960,7 @@ uploadButton.addEventListener('click', function () {
             spinner.style.display = "none";
             alertSuccess.style.display = "block";
             alertSuccess.innerHTML = "Hai caricato con successo questo tracciato!"
-            fileContainer =[];
+            fileContainer = [];
             console.log(fileContainer)
         },
         error: function (error) {
@@ -3013,7 +3007,7 @@ saveButton.addEventListener('click', function () {
 
 })
 
-// // Are you sure you want to leave?
-// window.onbeforeunload = function () {
-//     return "Data will be lost if you leave the page, are you sure?";
-// };
+// Are you sure you want to leave?
+window.onbeforeunload = function () {
+    return "Data will be lost if you leave the page, are you sure?";
+};

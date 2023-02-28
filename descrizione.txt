@@ -1,0 +1,5 @@
+Sezione Converter:
+Il displat del convertitore è rimosso nei casi in cui il file presenta il warning per la conversione.
+Nella navbar il path è rimosso da convertPage.html e messo in SorryPage.html.
+Abilitare in convert script la funzione nel trigger che fa partire l'ajax verso il JSP.
+Bisogna gestire i file vecchi in JSP prima di fare la chiamata FTP.

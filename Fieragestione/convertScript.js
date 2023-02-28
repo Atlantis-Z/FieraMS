@@ -1,3 +1,4 @@
+//Variables
 var convertButton = document.getElementById("convertButton");
 var uploadfile = document.getElementById("uploadfile");
 var alertSuccess = document.getElementById("alertSuccess");
@@ -10,8 +11,7 @@ var selectedFilesTitle = document.getElementById("selectedFilesTitle");
 var proceed = document.getElementById("proceed");
 var cantProceed = document.getElementById("cantProceed");
 
-
-
+//Displays
 selectedFilesTitle.style.display = "none";
 proceed.style.display = "none";
 
@@ -26,10 +26,12 @@ uploadfile.addEventListener('click', function () {
     spinner.style.display = "block";
 })
 
+//Inputfield change trigger
 uploadfile.addEventListener('change', function () {
     fileList.innerHTML = '';
     for (let i = 0; i < uploadfile.files.length; i++) {
         const file = uploadfile.files[i];
+        console.log(file.lastModifiedDate);
         const fileLink = document.createElement('a');
         fileLink.setAttribute('href', URL.createObjectURL(file));
         fileLink.setAttribute('download', file.name);
@@ -39,24 +41,28 @@ uploadfile.addEventListener('change', function () {
         fileList.appendChild(listItem);
         spinner.style.display="block";
 
-
+        //Variables of TYPE
         const anagrafica = fileList.innerHTML.includes("ANAG");
         const iscrizione = fileList.innerHTML.includes("ISC");
         const notifica = fileList.innerHTML.includes("NOT");
 
+        //Conditionals
         if (notifica == true && uploadfile.files.length == 1 || anagrafica == true && iscrizione == true && uploadfile.files.length == 2) {
             convertButton.style.display = "block";
             selectedFilesTitle.style.display = "block";
             proceed.style.display = "block";
             spinner.style.display="none";
             cantProceed.style.display="none";
+            modalError.style.display = "none";
 
         } else {
+            modalError.innerHTML = "Devi selezionare i file in maniera corretta! Non possiamo procedere con la conversione..."
+            modalError.style.display = "block";
             convertButton.style.display = "none";
             selectedFilesTitle.style.display = "block";
             proceed.style.display = "none";
             spinner.style.display="none";
-            cantProceed.innerHTML = "Devi selezionare i file in maniera corretta! Non possiamo procedere con la conversione..."
+            cantProceed.innerHTML = "Seleziona di nuovo i file e riprova..."
 
 
         }
@@ -64,11 +70,9 @@ uploadfile.addEventListener('change', function () {
     }
 });
 
-
-
 //Trigger Send data
 convertButton.addEventListener('click', function () {
-    sendConvertData();
+    // sendConvertData();
 })
 
 //SEND DATA TO JSP (convert)
