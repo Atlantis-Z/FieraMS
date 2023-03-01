@@ -1,3 +1,20 @@
+//Manifestazioni e Padiglioni Object
+var exibitionsObj = {
+    "26323": {
+        "22P": "22P",
+        "24P": "24P",
+        "Atrio CS": "Atrio CS",
+    },
+    "20123": {
+        "7P": "7P",
+        "94P": "94P",
+        "Atrio CS": "Atrio CS",
+    },
+
+};
+
+
+
 //Global variables
 var modalError = document.getElementById('modalError');
 var alertSuccess = document.getElementById('alertSuccess');
@@ -55,6 +72,10 @@ uploadfile.addEventListener('change', function () {
     openNewFile.style.display = "block";
     var opendFiles = document.getElementById('opendFiles');
     var filename = uploadfile.files[0].name;
+    let filenameSections = filename.split("_");
+    let fileType = filenameSections[0];
+    let ExCode = filenameSections[1];
+    let fileNumber = filenameSections[2];
     opendFiles.innerHTML = filename;
     saveButton.style.display = "block";
     searchbar.style.display = "block";
@@ -64,6 +85,8 @@ uploadfile.addEventListener('change', function () {
     for (let i = 0; i < files.length; i++) {
         fileContainer.push(files[i]);
     }
+
+
 
     //Parse the documents
     Papa.parse(uploadfile.files[0], {
@@ -84,12 +107,64 @@ uploadfile.addEventListener('change', function () {
             } else if (filename.includes('NOT')) {
                 ('Nome: Notifica')
                 constructTable('#table');
+                checkPav();
             } else {
                 ('Nome: Sbagliato!')
                 modalError.style.display = "block";
                 modalError.innerHTML = "Il nome del file è sbagliato, controlla!";
                 spinner.style.display = "none"
             }
+
+
+
+            //Function that check if the Exibitions Pavs are assigned correctly
+            function checkPav() {
+                //Get the table
+                let table = document.getElementById('table');
+                let columnIndex;
+                // Find the index of the "HallCode" column
+                for (let i = 0; i < table.rows[0].cells.length; i++) {
+                    if (table.rows[0].cells[i].textContent.trim() === "HallCode") {
+                        columnIndex = i;
+                        break;
+                    }
+                }
+                // Iterate through the rows and extract the values of the "HallCode" column
+                for (let i = 1; i < table.rows.length; i++) { // start at 1 to skip the header row
+                    let cell = table.rows[i].cells[columnIndex];
+                    let columnValue = cell.textContent.trim();
+
+                    //Iterate trough the ExibitionsObk than find out what are te pavs
+                    for (let manifestazione in exibitionsObj) {
+                        if (ExCode.match(manifestazione)) {
+                            for (let padiglione in exibitionsObj[manifestazione]) {
+                                console.log(padiglione)
+                                if (columnValue.match(padiglione)) {
+                                    console.log("Il padiglione" + " " + padiglione + " " + "coincide");
+                                    cell.style.color = "green"
+                                } else {
+                                    console.log("Il padiglione" + " " + padiglione + " " + "non coincide");
+                                }
+                            }
+                        }
+                    }
+
+                    //Color the cells
+                    if (cell.style.color == "green") {
+                        console.log("corretti")
+                    } else {
+                        cell.style.backgroundColor = "red"
+                        console.log("sbagliati");
+                        modalError.style.display = "block";
+                        uploadButton.style.display = "none";
+                        alertSuccess.style.display = "none";
+                        modalError.innerHTML = "Attenzione: Sembra che i padiglioni inseriti non siano assegnati per questa manifestazione..."
+                    }
+                }
+            }
+
+
+
 
             //Contruct the table
             function constructTable(selector) {
@@ -155,6 +230,10 @@ uploadfile.addEventListener('change', function () {
                             modalError.style.display = "block";
                             openErrorList.style.display = "block";
                             row.append($('<td title="VALORI AMMESSI: NEWLINE o CANLINE" contenteditable class="td text-danger fw-bolder"/>').addClass("border border-danger border-2").html(val));
+                        } else if (val.match("CORRECT")) {
+                            modalError.style.display = "block";
+                            openErrorList.style.display = "block";
+                            row.append($('<td title="CORRECT: NEWLINE o CANLINE" contenteditable class="td text-success fw-bolder"/>').addClass("border border-success border-2").html(val));
                         } else {
                             row.append($('<td contenteditable class="td"/>').html(val));
                         }
@@ -205,8 +284,8 @@ uploadfile.addEventListener('change', function () {
 
                         //ANAG STRUCTURE
                         if (keysOfRow.length === 27 || keysOfRow.length === 31 && filename.includes('ANAG')) {
-                            ('Anagrafica')
-                            fileType.innerHTML = "Anagrafica:"
+                            // ('Anagrafica');
+
                             for (var k in row) {
                                 var headerAnagrafica = k.includes("Current Code") || k.includes('Name') || k.includes('Description') || k.includes('Type') || k.includes('LanguageSpoken') || k.includes('Notes') || k.includes('WebSite') || k.includes('BillingData_NationalIdentificationNumber') || k.includes('BillingData_National_IdentificationCountryIso2') || k.includes('BillingData_VatIdentificationNumber') || k.includes('Administrative Email') || k.includes('Invoicing_Email') || k.includes('Street') || k.includes('AddressData_City') || k.includes('AddressData_PostalCode') || k.includes('AddressData_Province') || k.includes('AddressData_Region') || k.includes('AddressData_State') || k.includes('AddressData_ExternalSystemCode') || k.includes('Preferred') || k.includes('Shipping Street') || k.includes('Shipping AddressData_City') || k.includes('Shipping AddressData_PostalCode') || k.includes('Shipping AddressData_Province') || k.includes('Shipping AddressData_Region') || k.includes('Shipping AddressData_State') || k.includes('Shipping State') || k.includes('First Name') || k.includes('Last Name') || k.includes("Email") || k.includes('Telephone');
                                 if (headerAnagrafica == false) {
@@ -237,8 +316,9 @@ uploadfile.addEventListener('change', function () {
 
                             //ISC STRUCTURE
                         } else if (keysOfRow.length === 29 || keysOfRow.length === 23 && filename.includes('ISC')) {
-                            ('Iscrizione')
-                            fileType.innerHTML = "Iscrizione:"
+                            // ('Iscrizione');
+
+
                             for (var k in row) {
                                 var headerIscrizione = k.includes("OACliente") || k.includes('SoldTo_CurrCode') || k.includes('BillTo_CurrCode') || k.includes('ShipTo_CurrCode') || k.includes('Coexhibitor_ID') || k.includes('OrderDate') || k.includes('Services Paid by Consortium') || k.includes('FairSector') || k.includes('SquareMtBooked') || k.includes('RegistrationItemCode') || k.includes('Unit Selling Price') || k.includes('MER First Name') || k.includes('MER Last Name') || k.includes('MER Email') || k.includes('MER Telephone') || k.includes('SER First Name') || k.includes('SER Last Name') || k.includes('SER Email') || k.includes('SER Telephone') || k.includes('Logistics Event Rep Email') || k.includes('Administrative Event Rep Email') || k.includes('Brand') || k.includes('VAT Free') || k.includes('CIG') || k.includes('CUP') || k.includes('CUD') || k.includes('CUU') || k.includes('PEC Email') || k.includes('Payment Code') || k.includes('Main Event Rep') || k.includes('Security Event Rep') || k.includes('Logistics Event Rep') || k.includes('Administrative Event Rep');
                                 if (headerIscrizione == false) {
@@ -272,8 +352,8 @@ uploadfile.addEventListener('change', function () {
                             checkIscrizione();
                             //NOT STRUCTURE
                         } else if (keysOfRow.length === 19 || keysOfRow.length === 23 && filename.includes('NOT')) {
-                            // ('Notifica')
-                            fileType.innerHTML = "Notifica:"
+                            // ('Notifica');
+
                             for (var k in row) {
                                 var headerNotifica = k.includes("OACustomer") || k.includes('NoteDesc') || k.includes('NumStandOpenSides') || k.includes('Stand') || k.includes('FairSector') || k.includes('HallCode') || k.includes('Aisle') || k.includes('Saloon') || k.includes('SquareMtAssigned') || k.includes('Main Event Rep') || k.includes('Security Event Rep') || k.includes('Logistics Event Rep') || k.includes('Administrative Event Rep') || k.includes('Services Paid by Consortium') || k.includes('Order Date') || k.includes('Brand') || k.includes('VAT Free') || k.includes('Total Price') || k.includes('Quantity') || k.includes('Operation') || k.includes('Order Line ID') || k.includes('Product Code') || k.includes('Unit Price');
                                 if (headerNotifica == false) {
@@ -2319,6 +2399,25 @@ uploadfile.addEventListener('change', function () {
                                 ('OK')
                             }
 
+
+                            // for (let manifestazione in exibitionsObj){
+                            //     if(ExCode.match(manifestazione)){
+
+                            //         for (let key of changeHallCode) {
+                            //             for (let padvillon in exibitionsObj[manifestazione]){
+                            //                 if(padvillon.includes(HallCodeValue)){
+                            //                     // console.log(HallCodeValue);
+                            //                     // row[key] = row[key] + ":" + "CORRECT";
+                            //                 }else{
+                            //                     console.log("Errore:" + HallCodeValue);
+
+                            //                 }
+                            //             }
+
+                            //         }
+                            //     }
+                            //  }
+
                             //Aisle
                             var numA = AisleValue.toString().split(".");
                             decimals = (numA[numA.length - 1]).toString();
@@ -3007,7 +3106,7 @@ saveButton.addEventListener('click', function () {
 
 })
 
-// Are you sure you want to leave?
-window.onbeforeunload = function () {
-    return "Data will be lost if you leave the page, are you sure?";
-};
+// // Are you sure you want to leave?
+// window.onbeforeunload = function () {
+//     return "Data will be lost if you leave the page, are you sure?";
+// };
