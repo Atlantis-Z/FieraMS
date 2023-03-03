@@ -1,18 +1,710 @@
 //Manifestazioni e Padiglioni Object
 var exibitionsObj = {
-    "26323": {
-        "22P": "22P",
-        "24P": "24P",
-        "Atrio CS": "Atrio CS",
-    },
-    "20123": {
-        "7P": "7P",
-        "94P": "94P",
-        "Atrio CS": "Atrio CS",
-    },
 
+    "27723": {
+
+        "Pavs": {
+            "11P": "11P",
+            "13P": "13P",
+            "15P": "15P",
+            "22P": "22P",
+            "24P": "24P",
+            "9P": "9P",
+            "Atrio CS": "Atrio CS",
+
+        },
+
+        "Products": {
+            "00001": [0.0, 0.0],
+
+        },
+    },
+    "30023": {
+
+        "Pavs": {
+            "MiCo Ala Nord 0": "MiCo Ala Nord 0",
+
+        },
+
+        "Products": {
+
+        },
+    },
+    "28223": {
+
+        "Pavs": {
+            "12P": "12P",
+            "16P": "16P",
+            "20P": "20P",
+            "Atrio CS": "Atrio CS",
+
+        },
+
+        "Products": {
+            "00001": [0.0, 0.0],
+            "02001": [0.01, 999999.0],
+            "24229": [0.0, 9999999.0],
+            "29002": [50.0, 405.0],
+            "29003": [0.01, 60.0],
+            "29029": [0.0, 0.0],
+            "29031": [0.0, 0.0],
+            "29224": [30.0, 300.0],
+            "29228": [0.0, 0.0],
+            "30006": [0.0, 0.0],
+            "30011": [0.0, 0.0],
+            "30032": [0.0, 0.0],
+            "30076": [0.0, 999999.0],
+            "30077": [0.01, 999999.0],
+            "30108": [115.0, 120.0],
+            "30109": [120.0, 125.0],
+            "30110": [125.0, 130.0],
+            "30111": [130.0, 135.0],
+            "30399": [0.0, 0.0],
+            "31276": [100.0, 300.0],
+
+        },
+    },
+    "37223": {
+
+        "Pavs": {
+            "11P": "11P",
+            "13P": "13P",
+            "15P": "15P",
+            "9P": "9P",
+            "Atrio CS": "Atrio CS",
+
+        },
+
+        "Products": {
+            "00001": [0.0, 0.0],
+            "29001": [570.0, 570.0],
+            "29002": [570.0, 570.0],
+            "29029": [0.0, 0.0],
+            "29057": [400.0, 400.0],
+            "29182": [0.0, 0.0],
+            "29231": [400.0, 400.0],
+            "29232": [0.0, 0.0],
+            "30006": [0.0, 0.0],
+            "30018": [64.8, 64.8],
+            "30072": [0.0, 0.0],
+            "30073": [0.01, 99999.0],
+            "30076": [0.01, 99999.0],
+            "30088": [105.8, 105.8],
+            "30108": [203.3, 208.3],
+            "30109": [211.3, 216.3],
+            "30110": [217.3, 222.3],
+            "30111": [220.3, 225.3],
+            "30112": [105.8, 105.8],
+            "30317": [15.0, 15.0],
+            "30318": [3.3, 3.3],
+            "30323": [0.0, 0.0],
+            "30411": [0.0, 0.0],
+            "30426": [0.0, 0.0],
+            "30488": [0.01, 999999.0],
+            "31310": [1500.0, 1500.0],
+
+        },
+    },
+    "37923": {
+
+        "Pavs": {
+            "10P": "10P",
+            "14P": "14P",
+            "18P": "18P",
+            "1P": "1P",
+            "22P": "22P",
+            "24P": "24P",
+            "2P": "2P",
+            "3P": "3P",
+            "4P": "4P",
+            "5P": "5P",
+            "6P": "6P",
+            "7P": "7P",
+            "Atrio CS": "Atrio CS",
+
+        },
+
+        "Products": {
+            "00001": [0.0, 0.0],
+            "29002": [570.0, 570.0],
+            "29010": [0.0, 0.0],
+            "29029": [0.0, 0.0],
+            "29057": [400.0, 400.0],
+            "29182": [0.0, 0.0],
+            "29232": [0.0, 0.0],
+            "30006": [0.0, 0.0],
+            "30018": [59.46, 59.46],
+            "30076": [0.01, 999999.0],
+            "30088": [96.06, 96.06],
+            "30108": [183.56, 187.56],
+            "30109": [191.56, 195.56],
+            "30110": [199.56, 203.56],
+            "30111": [202.56, 206.56],
+            "30112": [96.06, 96.06],
+            "30318": [4.56, 4.56],
+            "30323": [0.0, 0.0],
+            "30411": [0.0, 0.0],
+            "30426": [0.0, 0.0],
+            "30488": [0.01, 999999.0],
+            "30550": [0.0, 0.0],
+            "30649": [0.01, 0.01],
+            "31310": [1500.0, 1500.0],
+
+        },
+    },
+    "46023": {
+
+        "Pavs": {
+            "10P": "10P",
+            "14P": "14P",
+            "18P": "18P",
+            "1P": "1P",
+            "22P": "22P",
+            "24P": "24P",
+            "2P": "2P",
+            "3P": "3P",
+            "4P": "4P",
+            "5P": "5P",
+            "6P": "6P",
+            "7P": "7P",
+            "Atrio CS": "Atrio CS",
+
+        },
+
+        "Products": {
+            "00001": [0.0, 0.0],
+            "29002": [570.0, 570.0],
+            "29015": [0.0, 0.0],
+            "29029": [0.0, 0.0],
+            "29057": [400.0, 400.0],
+            "29182": [0.0, 0.0],
+            "29192": [0.0, 0.0],
+            "29231": [400.0, 400.0],
+            "29232": [0.0, 0.0],
+            "29637": [0.0, 0.0],
+            "30006": [0.0, 0.0],
+            "30018": [59.46, 59.46],
+            "30032": [0.0, 0.0],
+            "30044": [0.0, 0.0],
+            "30045": [0.0, 0.0],
+            "30072": [0.0, 0.0],
+            "30073": [0.01, 10000.0],
+            "30076": [0.01, 10000.0],
+            "30088": [96.06, 96.06],
+            "30108": [183.0, 188.0],
+            "30109": [191.0, 196.0],
+            "30110": [199.0, 204.0],
+            "30111": [202.0, 207.0],
+            "30112": [96.06, 96.06],
+            "30317": [0.0, 0.0],
+            "30318": [4.56, 4.56],
+            "30323": [0.0, 0.0],
+            "30349": [0.0, 0.0],
+            "30411": [0.0, 0.0],
+            "30426": [0.0, 0.0],
+            "30488": [0.01, 10000.0],
+            "30649": [0.01, 10000.0],
+            "31310": [1500.0, 1500.0],
+
+        },
+    },
+    "37023": {
+
+        "Pavs": {
+            "10P": "10P",
+            "14P": "14P",
+            "18P": "18P",
+            "1P": "1P",
+            "22P": "22P",
+            "24P": "24P",
+            "2P": "2P",
+            "3P": "3P",
+            "4P": "4P",
+            "5P": "5P",
+            "6P": "6P",
+            "7P": "7P",
+            "Atrio CS": "Atrio CS",
+
+        },
+
+        "Products": {
+            "00001": [0.0, 0.0],
+            "29001": [570.0, 570.0],
+            "29002": [570.0, 570.0],
+            "29029": [0.0, 0.0],
+            "29057": [400.0, 400.0],
+            "29182": [0.0, 0.0],
+            "29231": [400.0, 400.0],
+            "29232": [0.0, 0.0],
+            "30006": [0.0, 0.0],
+            "30018": [59.46, 59.46],
+            "30032": [0.0, 0.0],
+            "30072": [0.0, 0.0],
+            "30073": [0.01, 100000.0],
+            "30076": [0.01, 100000.0],
+            "30077": [0.01, 100000.0],
+            "30088": [96.06, 96.06],
+            "30108": [183.0, 188.0],
+            "30109": [191.0, 196.0],
+            "30110": [191.0, 250.0],
+            "30111": [202.0, 207.0],
+            "30112": [96.06, 96.06],
+            "30133": [0.01, 100000.0],
+            "30253": [0.01, 100000.0],
+            "30260": [0.0, 0.0],
+            "30317": [15.0, 15.0],
+            "30318": [4.56, 4.56],
+            "30323": [0.0, 0.0],
+            "30399": [0.0, 0.0],
+            "30411": [0.0, 0.0],
+            "30426": [0.0, 0.0],
+            "30488": [0.01, 100000.0],
+            "30649": [0.01, 100000.0],
+            "30676": [0.0, 0.0],
+            "31310": [1500.0, 1500.0],
+
+        },
+    },
+    "37623": {
+
+        "Pavs": {
+            "10P": "10P",
+            "14P": "14P",
+            "18P": "18P",
+            "1P": "1P",
+            "22P": "22P",
+            "24P": "24P",
+            "2P": "2P",
+            "3P": "3P",
+            "4P": "4P",
+            "5P": "5P",
+            "6P": "6P",
+            "7P": "7P",
+            "Atrio CS": "Atrio CS",
+
+        },
+
+        "Products": {
+            "00001": [0.0, 0.0],
+            "29002": [570.0, 570.0],
+            "29029": [0.0, 0.0],
+            "29057": [400.0, 400.0],
+            "29182": [0.0, 0.0],
+            "29231": [400.0, 400.0],
+            "29232": [0.0, 0.0],
+            "30006": [0.0, 0.0],
+            "30018": [59.46, 59.46],
+            "30072": [0.0, 0.0],
+            "30073": [0.01, 999999.0],
+            "30076": [0.01, 99999.0],
+            "30088": [96.06, 96.06],
+            "30108": [183.56, 187.56],
+            "30109": [191.56, 195.56],
+            "30110": [199.56, 203.56],
+            "30111": [202.56, 206.56],
+            "30112": [96.06, 96.06],
+            "30317": [15.0, 15.0],
+            "30318": [4.56, 4.56],
+            "30323": [0.0, 0.0],
+            "30411": [0.0, 0.0],
+            "30426": [0.0, 0.0],
+            "30488": [0.01, 999999.0],
+            "31310": [1500.0, 1500.0],
+
+        },
+    },
+    "30823": {
+
+        "Pavs": {
+            "12P": "12P",
+            "16P": "16P",
+            "8P": "8P",
+            "Atrio CS": "Atrio CS",
+
+        },
+
+        "Products": {
+            "00001": [0.0, 0.0],
+
+        },
+    },
+    "26323": {
+
+        "Pavs": {
+            "22P": "22P",
+            "24P": "24P",
+            "Atrio CS": "Atrio CS",
+
+        },
+
+        "Products": {
+            "00001": [0.0, 0.0],
+            "02419": [0.01, 90.0],
+            "24229": [0.0, 0.0],
+            "29002": [350.0, 1000.0],
+            "29003": [0.0, 100.0],
+            "29010": [-1000.0, 1000000.0],
+            "29015": [-1000.0, 1000000.0],
+            "29029": [0.0, 0.0],
+            "29031": [0.0, 0.0],
+            "29224": [0.01, 600.0],
+            "29228": [0.0, 0.0],
+            "30006": [0.0, 0.0],
+            "30032": [0.0, 0.0],
+            "30034": [-1000.0, 1000000.0],
+            "30044": [0.0, 0.0],
+            "30045": [-1000.0, 1000000.0],
+            "30076": [-1000.0, 1000000.0],
+            "30077": [0.0, 0.0],
+            "30080": [10.0, 252.0],
+            "30088": [0.01, 90.0],
+            "30095": [166.0, 180.0],
+            "30108": [200.0, 226.0],
+            "30109": [218.0, 247.0],
+            "30110": [228.0, 257.0],
+            "30111": [228.0, 257.0],
+            "30301": [190.0, 206.0],
+            "30302": [208.0, 225.0],
+            "30303": [215.0, 232.0],
+            "30304": [215.0, 232.0],
+            "30349": [0.0, 0.0],
+            "30382": [150.0, 196.0],
+            "30399": [0.0, 0.0],
+            "30544": [0.0, 0.0],
+            "30550": [-1000.0, 1000000.0],
+            "30551": [0.0, 0.0],
+            "30842": [0.0, 0.0],
+
+        },
+    },
+    "34323": {
+
+        "Pavs": {
+            "13P": "13P",
+            "15P": "15P",
+            "Atrio CS": "Atrio CS",
+
+        },
+
+        "Products": {
+            "00001": [0.0, 0.0],
+            "18002": [0.01, 10000.0],
+            "22289": [150.0, 150.0],
+            "22290": [150.0, 150.0],
+            "22291": [150.0, 150.0],
+            "22292": [200.0, 200.0],
+            "22293": [200.0, 200.0],
+            "22294": [200.0, 200.0],
+            "22295": [150.0, 150.0],
+            "22296": [150.0, 150.0],
+            "22297": [150.0, 150.0],
+            "22298": [500.0, 500.0],
+            "22299": [500.0, 500.0],
+            "22300": [500.0, 500.0],
+            "24011": [400.0, 400.0],
+            "24823": [400.0, 400.0],
+            "24849": [400.0, 400.0],
+            "24865": [800.0, 800.0],
+            "24866": [800.0, 800.0],
+            "24867": [800.0, 800.0],
+            "24868": [300.0, 300.0],
+            "24869": [300.0, 300.0],
+            "24870": [300.0, 300.0],
+            "29002": [270.0, 270.0],
+            "29003": [200.0, 200.0],
+            "29037": [0.0, 0.0],
+            "30006": [0.0, 0.0],
+            "30065": [0.01, 10000.0],
+            "30066": [0.0, 0.0],
+            "30073": [0.01, 10000.0],
+            "30074": [202.0, 202.0],
+            "30075": [187.0, 187.0],
+            "30076": [0.01, 10000.0],
+            "30080": [171.0, 220.0],
+            "30081": [217.0, 217.0],
+            "30082": [201.0, 201.0],
+            "30083": [184.0, 184.0],
+            "30088": [0.01, 10000.0],
+            "30145": [202.0, 202.0],
+            "30146": [187.0, 187.0],
+            "30147": [171.0, 171.0],
+            "30148": [217.0, 217.0],
+            "30149": [202.0, 202.0],
+            "30150": [187.0, 187.0],
+            "30151": [171.0, 171.0],
+            "30152": [217.0, 217.0],
+            "30156": [201.0, 201.0],
+            "30157": [201.0, 201.0],
+            "30166": [202.0, 202.0],
+            "30167": [187.0, 187.0],
+            "30168": [171.0, 171.0],
+            "30169": [217.0, 217.0],
+            "30170": [184.0, 184.0],
+            "30192": [201.0, 201.0],
+            "30201": [184.0, 184.0],
+            "30318": [0.0, 0.0],
+            "30322": [13.0, 13.0],
+            "30323": [0.0, 0.0],
+            "30368": [0.01, 10000.0],
+            "30369": [0.01, 10000.0],
+            "30762": [184.0, 184.0],
+            "30798": [0.01, 10000.0],
+            "30815": [0.01, 10000.0],
+
+        },
+    },
+    "40223": {
+
+        "Pavs": {
+            "10P": "10P",
+            "11P": "11P",
+            "14P": "14P",
+            "18P": "18P",
+            "1P": "1P",
+            "2P": "2P",
+            "3P": "3P",
+            "4P": "4P",
+            "5P": "5P",
+            "6P": "6P",
+            "7P": "7P",
+            "9P": "9P",
+            "Atrio CS": "Atrio CS",
+            "SALE STELLA POLARE 1°P.": "SALE STELLA POLARE 1°P.",
+            "SALE STELLA POLARE P.T": "SALE STELLA POLARE P.T",
+
+        },
+
+        "Products": {
+            "00001": [0.0, 0.0],
+
+        },
+    },
+    "39323": {
+
+        "Pavs": {
+            "11P": "11P",
+            "13P": "13P",
+            "15P": "15P",
+            "22P": "22P",
+            "24P": "24P",
+            "9P": "9P",
+            "Atrio CS": "Atrio CS",
+
+        },
+
+        "Products": {
+            "00001": [0.0, 0.0],
+
+        },
+    },
+    "58523": {
+
+        "Pavs": {
+            "5P": "5P",
+            "7P": "7P",
+            "Atrio CS": "Atrio CS",
+
+        },
+
+        "Products": {
+
+        },
+    },
+    "27523": {
+
+        "Pavs": {
+            "11P": "11P",
+            "13P": "13P",
+            "15P": "15P",
+            "22P": "22P",
+            "24P": "24P",
+            "9P": "9P",
+            "Atrio CS": "Atrio CS",
+
+        },
+
+        "Products": {
+
+        },
+    },
+    "42723": {
+
+        "Pavs": {
+            "12P": "12P",
+            "8P": "8P",
+            "Atrio CS": "Atrio CS",
+
+        },
+
+        "Products": {
+            "00001": [0.0, 0.0],
+
+        },
+    },
+    "55723": {
+
+        "Pavs": {
+            "11P": "11P",
+            "13P": "13P",
+            "14P": "14P",
+            "15P": "15P",
+            "18P": "18P",
+            "22P": "22P",
+            "24P": "24P",
+            "9P": "9P",
+            "Area Esterna EST": "Area Esterna EST",
+            "Area Esterna OVEST": "Area Esterna OVEST",
+            "Atrio CS": "Atrio CS",
+
+        },
+
+        "Products": {
+
+        },
+    },
+    "58323": {
+
+        "Pavs": {
+            "11P": "11P",
+            "13P": "13P",
+            "14P": "14P",
+            "15P": "15P",
+            "18P": "18P",
+            "22P": "22P",
+            "24P": "24P",
+            "9P": "9P",
+            "Area Esterna EST": "Area Esterna EST",
+            "Area Esterna OVEST": "Area Esterna OVEST",
+            "Atrio CS": "Atrio CS",
+
+        },
+
+        "Products": {
+
+        },
+    },
+    "26023": {
+
+        "Pavs": {
+            "12P": "12P",
+            "16P": "16P",
+            "20P": "20P",
+            "8P": "8P",
+
+        },
+
+        "Products": {
+
+        },
+    },
+    "32323": {
+
+        "Pavs": {
+            "8P": "8P",
+            "Atrio CS": "Atrio CS",
+
+        },
+
+        "Products": {
+
+        },
+    },
+    "47623": {
+
+        "Pavs": {
+            "10P": "10P",
+            "14P": "14P",
+            "1P": "1P",
+            "2P": "2P",
+            "3P": "3P",
+            "4P": "4P",
+            "5P": "5P",
+            "6P": "6P",
+            "7P": "7P",
+            "Atrio CS": "Atrio CS",
+
+        },
+
+        "Products": {
+
+        },
+    },
+    "28723": {
+
+        "Pavs": {
+            "13P": "13P",
+            "15P": "15P",
+            "Atrio CS": "Atrio CS",
+
+        },
+
+        "Products": {
+
+        },
+    },
+    "42624": {
+
+        "Pavs": {
+            "10P": "10P",
+            "11P": "11P",
+            "13P": "13P",
+            "14P": "14P",
+            "15P": "15P",
+            "18P": "18P",
+            "1P": "1P",
+            "22P": "22P",
+            "24P": "24P",
+            "2P": "2P",
+            "3P": "3P",
+            "4P": "4P",
+            "5P": "5P",
+            "6P": "6P",
+            "7P": "7P",
+            "9P": "9P",
+            "PE-da definire": "PE-da definire",
+
+        },
+
+        "Products": {
+
+        },
+    },
+    "31524": {
+
+        "Pavs": {
+            "12P": "12P",
+            "8P": "8P",
+
+        },
+
+        "Products": {
+
+        },
+    },
 };
 
+
+
+
+// var pavillionsObj = {
+//     <
+//     %
+
+//     out.println("[");
+//     for (TsSmall myTs: results) {
+//         TreeSet < String > listaPadiglioni = myTs.getHallsList();
+//         out.println("{\n\"tsid\":\"" + myTs.getTsId() + "\",");
+//         out.print("\"pavillions\": [");
+//         for (String mioPadiglione: listaPadiglioni) {
+//             out.print("\"" + mioPadiglione + "\", ");
+//         }
+//         out.print("]\n},");
+//     }
+//     out.println("]");
+
+//     %
+//     >
+// };
 
 
 //Global variables
@@ -107,7 +799,7 @@ uploadfile.addEventListener('change', function () {
             } else if (filename.includes('NOT')) {
                 ('Nome: Notifica')
                 constructTable('#table');
-                checkPav();
+                Pavs_Products();
             } else {
                 ('Nome: Sbagliato!')
                 modalError.style.display = "block";
@@ -117,54 +809,136 @@ uploadfile.addEventListener('change', function () {
 
 
 
+
             //Function that check if the Exibitions Pavs are assigned correctly
-            function checkPav() {
+            function Pavs_Products() {
                 //Get the table
                 let table = document.getElementById('table');
-                let columnIndex;
-                // Find the index of the "HallCode" column
+
+                //Declare the indexs variables
+                let columnIndexHallCode;
+                let columnIndexProductCode;
+                let columnIndexUnitPrice
+
+                // Find the index of the "HallCode", "Product Code" and "Unit Price" columns
                 for (let i = 0; i < table.rows[0].cells.length; i++) {
                     if (table.rows[0].cells[i].textContent.trim() === "HallCode") {
-                        columnIndex = i;
+                        columnIndexHallCode = i;
                         break;
                     }
                 }
+                for (let y = 0; y < table.rows[0].cells.length; y++) {
+                    if (table.rows[0].cells[y].textContent.trim() === "Product Code") {
+                        columnIndexProductCode = y;
+                        break;
+                    }
+                }
+                for (let j = 0; j < table.rows[0].cells.length; j++) {
+                    if (table.rows[0].cells[j].textContent.trim() === "Unit Price") {
+                        columnIndexUnitPrice = j;
+                        break;
+                    }
+                }
+
                 // Iterate through the rows and extract the values of the "HallCode" column
                 for (let i = 1; i < table.rows.length; i++) { // start at 1 to skip the header row
-                    let cell = table.rows[i].cells[columnIndex];
+                    let cell = table.rows[i].cells[columnIndexHallCode];
                     let columnValue = cell.textContent.trim();
-
-                    //Iterate trough the ExibitionsObk than find out what are te pavs
+                    //Iterate trough the ExibitionsObj than find out what are te pavs
                     for (let manifestazione in exibitionsObj) {
                         if (ExCode.match(manifestazione)) {
-                            for (let padiglione in exibitionsObj[manifestazione]) {
-                                console.log(padiglione)
-                                if (columnValue.match(padiglione)) {
-                                    console.log("Il padiglione" + " " + padiglione + " " + "coincide");
-                                    cell.style.color = "green"
-                                } else {
-                                    console.log("Il padiglione" + " " + padiglione + " " + "non coincide");
+                            for (let pavsProducts in exibitionsObj[manifestazione]) {
+                                console.log("PADIGLIONE")
+                                if (pavsProducts.match("Pavs")) {
+                                    for (let padiglione in exibitionsObj[manifestazione][pavsProducts]) {
+                                        // console.log(padiglione)
+                                        if (columnValue.match(padiglione)) {
+                                            cell.style.color = "green"
+                                        } else {
+                                            console.warn("Sembra che ci siano degli errori nei padiglioni!");
+                                        }
+                                    };
                                 }
                             }
                         }
                     }
-
-                    //Color the cells
-                    if (cell.style.color == "green") {
-                        console.log("corretti")
-                    } else {
-                        cell.style.backgroundColor = "red"
+                    //Color the cells of the Halls
+                    if (cell.style.color != "green") {
+                        cell.style.backgroundColor = "rgb(255, 49, 49)";
                         console.log("sbagliati");
                         modalError.style.display = "block";
                         uploadButton.style.display = "none";
                         alertSuccess.style.display = "none";
-                        modalError.innerHTML = "Attenzione: Sembra che i padiglioni inseriti non siano assegnati per questa manifestazione..."
+                        modalError.innerHTML= "Padiglioni errati!" + " ";
+                    } else {
+                        console.log("Corretti");
+                    }
+                }
+
+                // Iterate through the rows and extract the values of the "HallCode" column
+                for (let i = 1; i < table.rows.length; i++) { // start at 1 to skip the header row
+                    let cell = table.rows[i].cells[columnIndexProductCode];
+                    let columnValueProductCode = cell.textContent.trim();
+
+                    let cellUnitPrice = table.rows[i].cells[columnIndexUnitPrice];
+                    let columnValueUnitPrice = parseFloat(cellUnitPrice.textContent.trim());
+
+
+                    //Iterate trough the ExibitionsObj than find out what are te pavs
+                    for (let manifestazione in exibitionsObj) {
+                        if (ExCode.match(manifestazione)) {
+                            for (let pavsProducts in exibitionsObj[manifestazione]) {
+                                console.log("PRODOTTO")
+                                if (pavsProducts.match("Products")) {
+                                    for (let prodotto in exibitionsObj[manifestazione][pavsProducts]) {
+                                        //If the value of the Product code does not match wih the ones in the object trhow error
+                                        if (columnValueProductCode.match(prodotto)) {
+                                            cell.style.color = "green";
+                                            //Declare variables of the min and max range of the Object
+                                            const min = exibitionsObj[manifestazione][pavsProducts][prodotto][0];
+                                            console.log(min, columnValueUnitPrice)
+                                            const max = exibitionsObj[manifestazione][pavsProducts][prodotto][1];
+                                            console.log(max, columnValueUnitPrice)
+                                            //If the value of unit Price Field is in the range of min/max it's OK, else throw an error
+                                            if (columnValueUnitPrice >= min && columnValueUnitPrice <= max) {
+                                                cellUnitPrice.style.color = "green";
+                                            } else {
+                                                console.warn("Sembra che qualche Prezzo Unitario non coincida con quelli della lista!")
+                                            }
+                                        } else {
+                                            console.warn("Sembra che qualche Codice prodotto non coincida con quelli della lista");
+                                        }
+
+                                    };
+                                }
+                            }
+                        }
+                    }
+                    //Color the cells of the Halls
+                    if (cell.style.color != "green") {
+                        cell.style.backgroundColor = "rgb(255, 49, 49)";
+                        console.log("sbagliati");
+                        modalError.style.display = "block";
+                        uploadButton.style.display = "none";
+                        alertSuccess.style.display = "none";
+                        modalError.innerHTML ="Controlla: Padiglione, Product Code e Unit Price!";
+                    } else {
+                        console.log("Corretti")
+                    }
+
+                    //Color the cells of the unit Price
+                    if (cellUnitPrice.style.color != "green") {
+                        cellUnitPrice.style.backgroundColor = "rgb(255, 49, 49)";
+                        console.log("sbagliati");
+                        modalError.style.display = "block";
+                        uploadButton.style.display = "none";
+                        alertSuccess.style.display = "none";
+                        modalError.innerHTML="Controlla: Padiglione, Product Code e Unit Price!";
+                    } else {
+                        console.log("Corretti");
                     }
                 }
             }
-
-
-
 
             //Contruct the table
             function constructTable(selector) {
